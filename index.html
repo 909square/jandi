@@ -324,20 +324,18 @@ function scatter(){
 }
 function tidy(){
   if(MQ.matches){
-    items.forEach(({n,doc})=>{n.style.display=doc?'':'none';n.style.transform='rotate(0deg)'});
+    items.forEach(({n})=>{n.style.display='';n.style.transform='rotate(0deg)'});
     return;
   }
   const W=innerWidth,cw=262,pad=20;
   const cols=Math.max(1,Math.floor((W-pad*2)/cw));
   const offX=(W-cols*cw)/2;
   const colY=new Array(cols).fill(96);
-  let i=0;
-  items.forEach(({n,doc})=>{
-    if(!doc){n.style.display='none';return}
+  items.forEach(({n},i)=>{
     n.style.display='';n.style.transform='rotate(0deg)';
     const c=i%cols,h0=n.offsetHeight||270;
     place(n,offX+c*cw,colY[c],0);
-    colY[c]+=h0+28;i++;
+    colY[c]+=h0+28;
   });
   desk.style.height=(Math.max(...colY)+60)+'px';
 }
