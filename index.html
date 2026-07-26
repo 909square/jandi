@@ -133,7 +133,7 @@ body.pin .doc{position:absolute}
 .ov{
   position:fixed;inset:0;background:rgba(15,22,18,.82);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);
   display:flex;align-items:center;justify-content:center;padding:20px;
-  opacity:0;pointer-events:none;transition:opacity .22s ease;z-index:60;
+  opacity:0;pointer-events:none;transition:opacity .22s ease;z-index:9000;
 }
 .ov.on{opacity:1;pointer-events:auto}
 .file{
@@ -387,6 +387,7 @@ let drag=null;
 desk.addEventListener('pointerdown',e=>{
   const n=e.target.closest('.doc'); if(!n)return;
   if(MQ.matches){drag={n,moved:false,tapOnly:true};return}
+  if(z>=50){ z=1; items.forEach(({n})=>n.style.zIndex=''); }
   n.style.zIndex=++z;
   drag={n,dx:e.clientX-n.offsetLeft,dy:e.clientY-n.offsetTop,moved:false};
   n.setPointerCapture(e.pointerId);
