@@ -467,7 +467,7 @@ applyMode();
   function start(){
     if(started||userMuted)return;
     started=true;
-    bgm.play().then(()=>{ fadeTo(0.5,1200); setPlaying(true); })
+    bgm.play().then(()=>{ fadeTo(0.7,1200); setPlaying(true); })
              .catch(()=>{ started=false; });
   }
   function setPlaying(on){
@@ -491,7 +491,7 @@ applyMode();
       setTimeout(()=>bgm.pause(),520); started=false; setPlaying(false);
     }else{
       userMuted=false; started=true;
-      bgm.play().then(()=>{fadeTo(0.5,800); setPlaying(true);}).catch(()=>{started=false;});
+      bgm.play().then(()=>{fadeTo(0.7,800); setPlaying(true);}).catch(()=>{started=false;});
     }
   });
 })();
