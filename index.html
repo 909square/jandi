@@ -410,7 +410,7 @@ desk.addEventListener('keydown',e=>{
 });
 
 /* ── 모달 ── */
-const ov=document.getElementById('ov');let last=null,scrollY=0;
+const ov=document.getElementById('ov');let last=null;
 function playPaper(){
   const a=document.getElementById('sfxPaper');
   if(!a)return;
@@ -435,13 +435,11 @@ function openFile(i){
   fQuote.style.display=s.quote?'':'none';
   fNote.textContent=s.note||'';
   document.getElementById('fNoteBox').style.display=s.note?'':'none';
-  if(MQ.matches){scrollY=window.scrollY;document.documentElement.style.overflow='hidden';document.body.style.overflow='hidden'}
   ov.classList.add('on'); x.focus();
 }
 function closeFile(){
   playPaperClose();
   ov.classList.remove('on');
-  if(MQ.matches){document.documentElement.style.overflow='';document.body.style.overflow='';window.scrollTo(0,scrollY)}
   last&&last.focus&&last.focus();
 }
 x.onclick=closeFile;
